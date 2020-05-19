@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>自己的小树洞</title>
+    <title>情绪检测门禁系统</title>
     <!-- <link rel="shortcut icon" href="./favicon.ico" /> -->
     <link type="text/css" rel="stylesheet" href="https://at.alicdn.com/t/font_1755564_z4mhxbw13mq.css"></link>
     <link href="https://fonts.loli.net/css?family=Noto+Serif+SC:200,300,900&display=swap&subset=chinese-simplified" rel="stylesheet">
@@ -21,15 +21,15 @@
 
 <body>
     <header id="header">
-        <h1>自己的小树洞</h1>
+        <h1>基于人脸识别的情绪检测门禁系统</h1>
     </header>
     <main id="app">
         <aside>
             <p id="describe">
-                一个自认为有些无聊的人，会把一些转瞬即逝的想法记录在这里
+                毕业设计-基于人脸识别的情绪检测门禁系统
             </p>
         </aside>
-        <p class="tip">现在总共唠叨了 {{count}} 条</p>
+        <p class="tip">共有 {{count}} 条记录</p>
         <section class="item" v-for="item in contents" v-cloak>
             <p v-html='item.attributes.content'></p>
             <time v-bind:datetime="item.attributes.time">{{item.attributes.time}}</time>
@@ -50,8 +50,8 @@
         Query
     } = AV;
     AV.init({
-        appId: "PSnGznFdSdWa1W55eAgrbDjp-MdYXbMMI", //你的 leancloud 应用 id （设置-应用keys-AppID）
-        appKey: "LdWFdeMw1dhtcaX5TGeJnUBR", //你的 leancloud 应用 AppKey （设置-应用keys-AppKey）
+        appId: "cDVO1i8wH9qrl4NRXDslGur2-MdYXbMMI", //你的 leancloud 应用 id （设置-应用keys-AppID）
+        appKey: "vapLrYEoIUFz1WWvBlXjuE3z", //你的 leancloud 应用 AppKey （设置-应用keys-AppKey）
         //serverURLs: '国际版可删除该行，否则必须在后台绑定域名并填写在此'
     });
 
@@ -83,7 +83,7 @@
     function getData(page = 0) {
         query.descending('createdAt').skip(page * 20).limit(20).find().then(function(results) {
             if (results.length == 0) {
-                alert('之前没唠叨过了')
+                alert('之前没有记录了')
             } else {
                 let resC = results;
                 reqData = false;
